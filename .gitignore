@@ -1,2 +1,4 @@
 #Ignore the following folders
 design/
+backend/env/
+backend/project/__pycache__/
