@@ -1,3 +1,28 @@
 from django.db import models
 
-# Create your models here.
+class Exercise(models.Model):
+    name = models.CharField(max_length=255)
+    main_muscle_group = models.CharField(max_length=255)
+    equipment = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class Routine(models.Model):
+    name = models.CharField(max_length=255)
+    exercises = models.ManyToManyField(Exercise)
+
+class Workout(models.Model):
+    date = models.DateField()
+    routine = models.ForeignKey(Routine, on_delete=models.SET_NULL, null=True)
+    volume = models.PositiveIntegerField()
+
+class Set(models.Model):
+    workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
+    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
+    set_type = models.CharField(max_length=255)
+    reps = models.PositiveSmallIntegerField()
+    weight = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return f"{self.exercise.name} - {self.reps} reps x {self.weight} kg"
