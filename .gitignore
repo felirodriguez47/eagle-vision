@@ -2,3 +2,5 @@
 design/
 backend/env/
 backend/project/__pycache__/
+fitness/__pycache__/
+fitness/migrations/__pycache__/
