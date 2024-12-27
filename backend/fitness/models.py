@@ -15,7 +15,7 @@ class Routine(models.Model):
 class Workout(models.Model):
     date = models.DateField()
     routine = models.ForeignKey(Routine, on_delete=models.SET_NULL, null=True)
-    volume = models.PositiveIntegerField()
+    volume = models.PositiveIntegerField(default=0)
 
 class Set(models.Model):
     workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
