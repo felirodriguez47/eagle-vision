@@ -17,6 +17,9 @@ class Workout(models.Model):
     routine = models.ForeignKey(Routine, on_delete=models.SET_NULL, null=True)
     volume = models.PositiveIntegerField(default=0)
 
+    def __str__(self):
+        return str(self.date)
+
 class Set(models.Model):
     workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
@@ -26,3 +29,11 @@ class Set(models.Model):
 
     def __str__(self):
         return f"{self.exercise.name} - {self.reps} reps x {self.weight} kg"
+
+class Run(models.Model):
+    date = models.DateField()
+    distance = models.PositiveSmallIntegerField()
+    time = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return str(self.date)

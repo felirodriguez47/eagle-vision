@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 
-from .models import Exercise, Workout, Set, Routine
-from .serializers import ExerciseSerializer, WorkoutSerializer, SetSerializer, RoutineSerializer
+from .models import Exercise, Workout, Set, Routine, Run
+from .serializers import ExerciseSerializer, WorkoutSerializer, SetSerializer, RoutineSerializer, RunSerializer
 
 class ExerciseViewSet(viewsets.ModelViewSet):
     queryset = Exercise.objects.all()
@@ -19,3 +19,7 @@ class SetViewSet(viewsets.ModelViewSet):
 class RoutineViewSet(viewsets.ModelViewSet):
     queryset = Routine.objects.all()
     serializer_class = RoutineSerializer
+
+class RunViewSet(viewsets.ModelViewSet):
+    queryset = Run.objects.all()
+    serializer_class = RunSerializer
